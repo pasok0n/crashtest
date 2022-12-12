@@ -1,6 +1,7 @@
 # crashtest
 A script to replay all crashes found by [AFLnet](https://github.com/aflnet/aflnet) on an uninstrumented target
 
+```
 HOW TO USE
 INPUT = is the result folder from AFLnet
 OUTPUT = is the filename for the output
@@ -9,7 +10,7 @@ Port = port for the target
 Target = Target application (e.g. ./dcmtk/build/bin/dcmqrscp)
 Target_Options = options for the target application (e.g. in dcmtk "--single-process")
 Kill_Signal = Optional kill signal if any (e.g. -s SIGUSR1, -s SIGTERM)
-
+```
 
 Example for dcmtk:
 ```console
