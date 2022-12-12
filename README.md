@@ -8,6 +8,7 @@ Protocol = is the protocol for the target
 Port = port for the target
 Target = Target application (e.g. ./dcmtk/build/bin/dcmqrscp)
 Target_Options = options for the target application (e.g. in dcmtk "--single-process")
+Kill_Signal = Optional kill signal if any (e.g. -s SIGUSR1, -s SIGTERM)
 
 
 Example for dcmtk:

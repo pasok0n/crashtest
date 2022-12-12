@@ -8,6 +8,9 @@ if [ $# -eq 0 ]; then
     echo "Port = port for the target"
     echo "Target = Target application (e.g. ./dcmtk/build/bin/dcmqrscp)"
     echo "Target_Options = options for the target application (e.g. in dcmtk "--single-process")"
+    echo "Kill_Signal = Optional kill signal if any (e.g. -s SIGUSR1, -s SIGTERM)"
+    echo ""
+    echo "./crashtest.sh input output protocol port target [target_options] [kill_signal]"
     exit 0
 fi
 
@@ -17,6 +20,7 @@ export PROTOCOL=$3
 export PORT=$4
 export TARGET=$5
 export TARGET_OPTIONS=$6
+export KILL_SIGNAL=$7
 
 # HOW TO USE
 # INPUT = is the result folder from AFLnet
@@ -25,6 +29,7 @@ export TARGET_OPTIONS=$6
 # Port = port for the target
 # Target = Target application (e.g. ./dcmtk/build/bin/dcmqrscp)
 # Target_Options = options for the target application (e.g. in dcmtk "--single-process")
+# Kill_Signal = Optional kill signal if any (e.g. -s SIGUSR1, -s SIGTERM)
 
 for f in $(echo $INPUT/replayable-crashes/id:*); do
     echo "=========================================================================================================="
@@ -32,7 +37,7 @@ for f in $(echo $INPUT/replayable-crashes/id:*); do
     echo ""
 
     aflnet-replay $f $PROTOCOL $PORT 10 100 > /dev/null 2>&1 &
-    timeout -k 15 5s $TARGET $TARGET_OPTIONS >> $OUTPUT 2>&1
+    timeout -k 15 $KILL_SIGNAL 5s $TARGET $TARGET_OPTIONS >> $OUTPUT 2>&1
 
     echo ""
     echo "=========================================================================================================="
