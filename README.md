@@ -1,5 +1,5 @@
 # crashtest
-A script to replay all crashes found by AFLnet on an uninstrumented target
+A script to replay all crashes found by [AFLnet](https://github.com/aflnet/aflnet) on an uninstrumented target
 
 HOW TO USE
 INPUT = is the result folder from AFLnet
