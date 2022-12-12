@@ -11,6 +11,7 @@ if [ $# -eq 0 ]; then
     echo "Kill_Signal = Optional kill signal if any (e.g. -s SIGUSR1, -s SIGTERM)"
     echo ""
     echo "./crashtest.sh input output protocol port target [target_options] [kill_signal]"
+    echo 'if no target_options then do ./crashtest.sh input output protocol port target "" [kill_signal] '
     exit 0
 fi
 
